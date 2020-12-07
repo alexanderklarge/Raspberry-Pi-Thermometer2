@@ -1,3 +1,12 @@
+import Adafruit_DHT
+import time
+import time
+import numpy as np
+#import pandas as pd
+import datetime
+
+sensor = Adafruit_DHT.DHT22
+
 def get_data():
     now = datetime.datetime.utcnow()
     now = now.strftime('%Y-%m-%d %H:%M:%S')
