@@ -7,7 +7,7 @@ import numpy as np
 #import pandas as pd
 import datetime
 from src import config
-from src import functions
+from src import data_viewer
 
 ### Variables and objects
 sensor = Adafruit_DHT.DHT22

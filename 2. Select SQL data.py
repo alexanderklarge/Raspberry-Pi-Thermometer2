@@ -6,26 +6,8 @@ import pandas as pd
 from IPython.display import display
 from matplotlib import pyplot as plt
 from src import config
+from src import functions
 
-def print_all(cursor,connection):
-    print('Select all from database:')
-    cursor.execute('SELECT * FROM testdb.temperature_and_humidity2')
-    myresult = cursor.fetchall()
-    for x in myresult:
-      print(x)
-      
-def select_all(cursor,connection):
-    print('Select all from database:')
-    cursor.execute('''SELECT
-                        DATE_FORMAT(timestamp, '%Y-%m-%d, %H-%i'),
-                        temperature,
-                        humidity
-                        FROM testdb.temperature_and_humidity3''')
-    myresult = cursor.fetchall()
-    df = pd.DataFrame(myresult)
-    #df.columns = cursor.keys()
-    return df
-        
 ### SQL connection
 config = {
     'user':config.user,
@@ -41,6 +23,8 @@ connection = mysql.connector.connect(**config)
 #config['database'] = 'testdb'
 cursor = connection.cursor()
 
+############################################
+### Getting a dataframe
 #print_all(cursor,connection)
 df = select_all(cursor,connection)
 
