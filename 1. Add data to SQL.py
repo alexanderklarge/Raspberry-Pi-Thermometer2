@@ -8,6 +8,7 @@ import numpy as np
 import datetime
 from src import config
 from src import data_viewer
+from src import data_uploader
 
 ### Variables and objects
 sensor = Adafruit_DHT.DHT22
@@ -31,5 +32,5 @@ config = {
 connection = mysql.connector.connect(**config)
 cursor = connection.cursor()
       
-functions.insert_multiple_readings_into_sql(cursor,connection,n=None,delay=600)
+data_uploader.insert_multiple_readings_into_sql(cursor,connection,n=None,delay=600)
 #select_all(cursor,connection)    

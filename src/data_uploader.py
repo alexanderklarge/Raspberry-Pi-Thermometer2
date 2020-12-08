@@ -26,8 +26,14 @@ def insert_data_to_sql(cursor,connection):
     # Getting values to insert
     try:
         humidity,temperature = Adafruit_DHT.read_retry(sensor,pin=2)
-        humidity = round(humidity,2)
-        temperature = round(temperature,2)
+        try: # something the sensor fails, this will prevent whole script from ending
+            humidity = round(humidity,2)
+        except:
+            pass
+        try:
+            temperature = round(temperature,2)
+        except:
+            pass
     except RuntimeError as error:
         temperature = 'Error'
         humidity = 'Error'
